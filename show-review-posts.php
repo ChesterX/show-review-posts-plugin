@@ -9,7 +9,7 @@
  * Plugin Name:       Hapigood reviews plugin
  * Plugin URI:        simpals.com
  * Description:       This is a custom Hapigood plugin for reviews showing
- * Version:           3.0.4
+ * Version:           3.0.5
  * Author:            Simpals Dev
  * Author URI:        simpals.com
  * License:           GPL-2.0+
@@ -89,11 +89,11 @@ function srp_flush_rewrite_rules() {
  */
 function srp_plugin_enqueue_styles() {
 
-	wp_enqueue_style( 'show-reviews-plugin', plugins_url( 'assets/style.css', __FILE__ ) );
+	wp_enqueue_style( 'show-reviews-plugin', plugins_url( 'assets/style.css?ver=3.0.5', __FILE__ ) );
 	wp_enqueue_style( 'jquery.fancybox.min', plugins_url( 'assets/jquery.fancybox.min.css', __FILE__ ) );
 	wp_enqueue_script( 'jquery.fancybox.min', plugins_url( 'assets/jquery.fancybox.min.js', __FILE__ ), array(),
 			'1.0.0', true ); // Print in footer
-	wp_enqueue_script( 'show-reviews-plugin-js', plugins_url( 'assets/script.js', __FILE__ ), array(),
+	wp_enqueue_script( 'show-reviews-plugin-js', plugins_url( 'assets/script.js?ver=3.0.5', __FILE__ ), array(),
 			'1.0.0', true ); // Print in footer
 }
 
@@ -106,8 +106,8 @@ add_action( 'wp_enqueue_scripts', 'srp_plugin_enqueue_styles' );
 function srp_plugin_admin_enqueue_styles() {
 
 	// include CSS files
-	wp_enqueue_style( 'show-reviews-plugin', plugins_url( 'assets/admin.css', __FILE__ ) );
-	wp_enqueue_script( 'srp-admin-scripts', plugins_url( 'assets/srp-admin-scripts.js', __FILE__ ), array(),
+	wp_enqueue_style( 'show-reviews-plugin', plugins_url( 'assets/admin.css?ver=3.0.5', __FILE__ ) );
+	wp_enqueue_script( 'srp-admin-scripts', plugins_url( 'assets/srp-admin-scripts.js?ver=3.0.5', __FILE__ ), array(),
 			'1.0.0', true ); // Print in footer
 
 	
