@@ -414,14 +414,16 @@ display: block !important;
 }
 
 .show-review-posts-row .nav-links{
-	    display: flex;
+	display: flex;
     justify-content: space-between;
     margin: 30px 0 50px 0;
 }
 
 .show-review-posts-row .nav-links div a{
-	    display: flex;
+	display: flex;
     align-items: center;
+	background: transparent;
+    box-shadow: none;
 }
 
 .show-review-posts-row .nav-links div a span{
@@ -440,3 +442,8 @@ display: block !important;
 .show-review-posts-row .show-review-posts-row h3.see-more{
 	font-weight: normal;
 }
+
+.link-full-review{
+	font-size: 16px !important;
+}
+
