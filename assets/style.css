@@ -493,7 +493,8 @@ span.close-link-full-review:hover {
 	font-weight: normal;
 }
 
-.link-full-review {
+.link-full-review, 
+.link-full-review a{
 	font-size: 16px !important;
 }
 
