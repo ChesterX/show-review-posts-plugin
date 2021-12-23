@@ -383,6 +383,11 @@ span.close-link-full-review:hover {
 	margin: 0 15px;
 }
 
+.show-review-posts-row .nav-links div a span,
+.show-review-posts-row .nav-links div a{
+	border:0 !important;
+}
+
 .l-review .review-posts-entry-content img {
 	max-width: 100%;
 }
@@ -490,4 +495,11 @@ span.close-link-full-review:hover {
 
 .link-full-review {
 	font-size: 16px !important;
+}
+
+.nav-next,
+.nav-previous{
+	float: none !important;
+    text-align: inherit !important;
+    width: auto !important;
 }
