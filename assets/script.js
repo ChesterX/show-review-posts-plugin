@@ -1,43 +1,36 @@
-// document.addEventListener('DOMContentLoaded', function (event) {
-
-//   const link_full_review_items = document.querySelectorAll('.link-full-review')
-//   const review_posts_full_content_items = document.querySelectorAll('.review-posts-full-content')
-//   const close_link_full_review_items = document.querySelectorAll('.close-link-full-review')
-//   const review_posts_entry_content_items = document.querySelectorAll('.review-posts-entry-content')
-
-
-//   // Add show class, show full review, number of links
-//   for (let i = 0; i < link_full_review_items.length; i++) {
-//     const item = link_full_review_items[i]
-//     item.addEventListener('click', () => addShowClass(item, i))
-//   }
-
-//   function addShowClass (item, i) {
-//     item.classList.toggle('hide')
-//     review_posts_entry_content_items[i].classList.toggle('hide')
-//     review_posts_full_content_items[i].classList.toggle('show')
-//     close_link_full_review_items[i].classList.toggle('show')
-//   }
-
-//   // Hide full review
-//   for (let n = 0; n < close_link_full_review_items.length; n++) {
-//     const item = close_link_full_review_items[n]
-//     item.addEventListener('click', () => deleteShowClass(n))
-//   }
-
-//   function deleteShowClass (n) {
-//     close_link_full_review_items[n].classList.toggle('show')
-//     link_full_review_items[n].classList.toggle('hide')
-//     review_posts_full_content_items[n].classList.toggle('show')
-//     review_posts_entry_content_items[n].classList.toggle('hide')
-//   }
-
-// })
 jQuery( document ).ready(function($) {
-	$('#share').on('click', function(){
-		 $.fancybox.open( $('.share'), {
+	// $('#share').on('click', function(){
+	// 	 $.fancybox.open( $('.share'), {
 
-		  });
+	// 	  });
+	// });
+
+
+	$('.review-posts-entry-footer .link-full-review a').on('click', function(){
+		let th = $(this).parents('.review-posts-article');
+		let url = $(this).attr('href');
+		let name = th.find('.review-author-name').text();
+		let description = th.find('.review-author-description').text();
+		let meta = th.find('.review-posts-right').html();
+		let fullcontent = th.find('.review-posts-full-content').html();
+		
+		$('#fn-fullrev h2').html('<a href="' + url + '">' + name + '</a>');
+		$('#fn-fullrev .fn-description').html(description);
+		$('#fn-fullrev .fn-meta').html(meta);
+		$('#fn-fullrev .fn-content').html(fullcontent);
+
+		$('#fn-fullrev .show-review-posts-share a').each(function(){
+			$(this).attr('href', $(this).data('share-url') + url);
+		});
+		
+
+		
+
+		$.fancybox.open( $('#fn-fullrev'), {
+
+		});
+
+		return false;
 	});
 
 	$('.base64img').each(function(){
