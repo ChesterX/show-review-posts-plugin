@@ -206,7 +206,7 @@ img.hapigood-logo.without-text {
 }
 
 .review-posts-article {
-	margin: 0 0 30px 0;
+	margin: 0 0 30px 0 !important;
 	width: 49%;
 	padding: 30px;
 	border: 2px solid #F2F4F1;
@@ -627,10 +627,16 @@ span.close-link-full-review:hover {
     font-weight: 700;
     margin-top: 0;
 	max-width: 80%;
+	text-transform: none;
 }
 
 #fn-fullrev h2 a{
 	text-decoration: none !important;
+	color: #072630;
+}
+
+#fn-fullrev h2 a:hover{
+	color: #072630;
 }
 
 #fn-fullrev .fn-description{
@@ -654,6 +660,10 @@ span.close-link-full-review:hover {
 
 #fn-fullrev .fn-content{
 	margin-top: 30px;
+}
+
+#fn-fullrev .fn-content p{
+	font-size: 18px;
 }
 
 #fn-fullrev .show-review-posts-share{
