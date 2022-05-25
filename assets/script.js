@@ -27,7 +27,7 @@ jQuery( document ).ready(function($) {
 		
 
 		$.fancybox.open( $('#fn-fullrev'), {
-
+			touch: false
 		});
 
 		return false;
