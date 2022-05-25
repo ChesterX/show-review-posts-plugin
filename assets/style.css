@@ -44,14 +44,17 @@
     text-decoration: none;
     max-width: 260px;
     padding: 11px 0;
+	color:#000;
 }
 
 .show-reviews-posts-share-button:hover{
     background: conic-gradient(from 222.61deg at 49.67% -127.45%, #ABD490 0deg, #7DCDD4 271.12deg, #ABD490 360deg);
+	color:#000;
 }
 
 .show-reviews-posts-share-button:focus{
 	background: conic-gradient(from 222.61deg at 49.67% -127.45%, #71B8BF 0deg, #9ABF82 275.62deg, #71B8BF 360deg);
+	color:#000;
 }
 
 /* Main layout */
@@ -356,6 +359,7 @@ span.close-link-full-review:hover {
 
 .show-review-posts-share{
 	display: flex;
+	align-items: center;
 }
 
 .show-review-posts-share a{
@@ -428,6 +432,7 @@ span.close-link-full-review:hover {
 	align-items: center;
 	justify-content: center;
 	border-radius: 100%;
+	padding: 0;
 }
 
 .show-review-posts-full-footer{
@@ -480,7 +485,7 @@ span.close-link-full-review:hover {
 
 
 .l-review .review-posts-entry-content img {
-	max-width: 100%;
+	max-width: 25%;
 }
 
 .l-review a.review-posts-link-to-source {
@@ -557,6 +562,7 @@ span.close-link-full-review:hover {
 .show-review-posts-row .nav-links {
 	display: flex;
 	justify-content: space-between;
+	flex-direction: row-reverse;
 }
 
 /* .show-review-posts-row .nav-links div a {
@@ -670,6 +676,7 @@ span.close-link-full-review:hover {
 	border-top: 2px solid #F2F4F1;
     padding-top: 30px;
     margin-top: 30px;
+	align-items: center;
 }
 
 
@@ -691,6 +698,10 @@ span.close-link-full-review:hover {
 
 #fn-fullrev .fancybox-button svg path{
 	fill: #7DCDD4;
+}
+
+#fn-fullrev .fn-content img{
+	max-width: 25%;
 }
 
 @media (max-width: 767px){
@@ -729,3 +740,14 @@ span.close-link-full-review:hover {
 		font-size: 13px;
 	}
 }
+
+.show-review-posts-header-rating__num,
+.show-review-posts-header-rating .scale{
+	opacity: 0;
+	cursor: default;
+}
+
+/* .nav-previous,
+.nav-next{
+	transform: rotate(180deg);
+} */
