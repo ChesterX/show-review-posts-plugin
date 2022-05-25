@@ -139,7 +139,7 @@ endif;
 	<div class="fn-meta"></div>
 	<p class="fn-content"></p>
 	<div class="show-review-posts-share">
-		<p>Share review</p>
+		<p>Share testimonial</p>
 		<!-- FB -->
 		<a href="#" data-share-url="https://www.facebook.com/sharer/sharer.php?u=">
 			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 7H20.504C22.987 7 25 9.013 25 11.496V20.505C25 22.987 22.987 25 20.504 25H11.496C9.013 25 7 22.987 7 20.504V11.5C7 9.015 9.015 7 11.5 7V7Z" stroke="#7DCDD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M15.0996 16.9H20.4996" stroke="#7DCDD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M20.5004 12.4H19.5554C18.0894 12.4 16.9004 13.589 16.9004 15.055V16V25" stroke="#7DCDD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path> </svg>

@@ -115,7 +115,7 @@ function srp_generate_review_posts( $atts ) {
 					<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M17.9332 17.3174C15.1028 18.9526 10.2532 18.9878 6.85645 17.3798L7.94765 15.1318C10.8084 16.1702 14.3204 16.1782 16.7476 15.031L17.9332 17.3174Z" fill="url(#paint0_angular_519_967)"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.3107 11.9798L16.5507 13.4838L14.4707 12.1798L17.7667 8.103L18.8211 8.0358L22.1091 11.9238L20.1891 13.5542L18.3107 11.9798ZM6.32828 11.9798L4.56828 13.4838L2.48828 12.1798L5.78428 8.103L6.83708 8.0358L10.1267 11.9238L8.20668 13.5542L6.32828 11.9798Z" fill="#072630"/> <defs> <radialGradient id="paint0_angular_519_967" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.3582 10.5267) rotate(133.452) scale(8.67962 8.83383)"> <stop stop-color="#7DCDD4"/> <stop offset="0.765625" stop-color="#ABD490"/> </radialGradient> </defs> </svg>
 				</div>
 				<div class="show-review-posts-header-rating__revcounter">
-				<?php echo wp_count_posts("srp_review_posts")->publish;?> reviews
+				<?php echo wp_count_posts("srp_review_posts")->publish;?> testimonials
 				</div>
 
 				<div class="scale"><span></span></div>
@@ -179,7 +179,7 @@ function srp_generate_review_posts( $atts ) {
 				<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M17.9332 17.3174C15.1028 18.9526 10.2532 18.9878 6.85645 17.3798L7.94765 15.1318C10.8084 16.1702 14.3204 16.1782 16.7476 15.031L17.9332 17.3174Z" fill="url(#paint0_angular_519_967)"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.3107 11.9798L16.5507 13.4838L14.4707 12.1798L17.7667 8.103L18.8211 8.0358L22.1091 11.9238L20.1891 13.5542L18.3107 11.9798ZM6.32828 11.9798L4.56828 13.4838L2.48828 12.1798L5.78428 8.103L6.83708 8.0358L10.1267 11.9238L8.20668 13.5542L6.32828 11.9798Z" fill="#072630"/> <defs> <radialGradient id="paint0_angular_519_967" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.3582 10.5267) rotate(133.452) scale(8.67962 8.83383)"> <stop stop-color="#7DCDD4"/> <stop offset="0.765625" stop-color="#ABD490"/> </radialGradient> </defs> </svg>
 			</div>
 			<div class="show-review-posts-header-rating__revcounter">
-				<?php echo wp_count_posts("srp_review_posts")->publish;?> reviews
+				<?php echo wp_count_posts("srp_review_posts")->publish;?> testimonials
 			</div>
 			<div class="scale"><span></span></div>
 		</div>
@@ -263,7 +263,7 @@ function srp_generate_review_posts( $atts ) {
 
 		<div class="show-review-posts-row show-review-posts-full-footer">
 			<div class="show-review-posts-share">
-				<p>Share review</p>
+				<p>Share testimonial</p>
 				<!-- FB -->
 				<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo get_permalink() ?>">
 					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 7H20.504C22.987 7 25 9.013 25 11.496V20.505C25 22.987 22.987 25 20.504 25H11.496C9.013 25 7 22.987 7 20.504V11.5C7 9.015 9.015 7 11.5 7V7Z" stroke="#7DCDD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/> <path d="M15.0996 16.9H20.4996" stroke="#7DCDD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/> <path d="M20.5004 12.4H19.5554C18.0894 12.4 16.9004 13.589 16.9004 15.055V16V25" stroke="#7DCDD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/> </svg>
