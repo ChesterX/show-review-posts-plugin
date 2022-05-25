@@ -9,7 +9,7 @@
  * Plugin Name:       Hapigood reviews plugin
  * Plugin URI:        simpals.com
  * Description:       This is a custom Hapigood plugin for reviews showing
- * Version:           3.0.9
+ * Version:           3.1.0
  * Author:            Simpals Dev
  * Author URI:        simpals.com
  * License:           GPL-2.0+
@@ -174,6 +174,7 @@ if ( ! function_exists( 'srp_create_custom_post_type' ) ) {
 			'publicly_queryable'  => true,
 			'capability_type'     => 'post',
 			'show_in_rest'        => true,
+			'rewrite' => array('slug' => 'testimonials'),
 		);
 		register_post_type( 'srp_review_posts', $args );
 
