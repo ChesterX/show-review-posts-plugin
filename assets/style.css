@@ -215,6 +215,7 @@ img.hapigood-logo.without-text {
 	border: 2px solid #F2F4F1;
 	box-sizing: border-box;
 	border-radius: 8px;
+	text-align: left;
 }
 
 .review-posts-article-full.review-posts-article{
@@ -626,14 +627,16 @@ span.close-link-full-review:hover {
 #fn-fullrev p{
 	font-family: 'Inter', sans-serif;
 	margin: 0;
+	padding: 0;
 }
 
 #fn-fullrev h2{
-	font-size: 18px;
-    font-weight: 700;
+	font-weight: 700;
     margin-top: 0;
-	max-width: 80%;
-	text-transform: none;
+    max-width: 80%;
+    text-transform: none;
+    font-size: 32px;
+    margin-bottom: 10px;
 }
 
 #fn-fullrev h2 a{
@@ -648,8 +651,9 @@ span.close-link-full-review:hover {
 #fn-fullrev .fn-description{
 	font-weight: 400;
     font-size: 16px;
-	max-width: 80%;
+	max-width: 95%;
     color: #A6B19B;
+	display: block;
 }
 
 #fn-fullrev .fn-meta{
@@ -670,6 +674,7 @@ span.close-link-full-review:hover {
 
 #fn-fullrev .fn-content p{
 	font-size: 18px;
+	line-height: 28px;
 }
 
 #fn-fullrev .show-review-posts-share{
