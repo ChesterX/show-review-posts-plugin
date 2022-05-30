@@ -396,6 +396,7 @@ span.close-link-full-review:hover {
 
 .show-review-posts-row .page-numbers {
 	padding: 12px !important;
+	color:#000 !important;
 }
 
 .show-review-posts-row .page-numbers:hover,
