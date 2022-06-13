@@ -9,7 +9,7 @@
  * Plugin Name:       Hapigood reviews plugin
  * Plugin URI:        simpals.com
  * Description:       This is a custom Hapigood plugin for reviews showing
- * Version:           3.1.4
+ * Version:           4.0.0
  * Author:            Simpals Dev
  * Author URI:        simpals.com
  * License:           GPL-2.0+
@@ -46,9 +46,9 @@ define( 'PLUGIN_SLUG', 'srp' );
 
 
 // plugin setup
-define('NUMBER_OF_WORDS', 30);
-define('MAIN_LOGO_NAME', 'hapigood-logo.png');
-define('MAIN_LOGO_NAME_WITHOUT_TEXT', 'hapigood-logo-without-text.jpg');
+define( 'NUMBER_OF_WORDS', 30 );
+define( 'MAIN_LOGO_NAME', 'hapigood-logo.png' );
+define( 'MAIN_LOGO_NAME_WITHOUT_TEXT', 'hapigood-logo-without-text.jpg' );
 
 // plugin path
 define( 'SRP_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
@@ -89,12 +89,12 @@ function srp_flush_rewrite_rules() {
  */
 function srp_plugin_enqueue_styles() {
 
-	wp_enqueue_style( 'show-reviews-plugin', plugins_url( 'assets/style.css?ver=3.0.6', __FILE__ ) );
+	wp_enqueue_style( 'show-reviews-plugin', plugins_url( 'assets/style.css?ver=3.0.5', __FILE__ ) );
 	wp_enqueue_style( 'jquery.fancybox.min', plugins_url( 'assets/jquery.fancybox.min.css', __FILE__ ) );
-	wp_enqueue_script( 'jquery.fancybox.min', plugins_url( 'assets/jquery.fancybox.min.js', __FILE__ ), array(),
-			'1.0.0', true ); // Print in footer
-	wp_enqueue_script( 'show-reviews-plugin-js', plugins_url( 'assets/script.js?ver=3.0.6', __FILE__ ), array(),
-			'1.0.0', true ); // Print in footer
+	wp_enqueue_script( 'jquery.fancybox.min', plugins_url( 'assets/jquery.fancybox.min.js', __FILE__ ), [],
+		'1.0.0', true ); // Print in footer
+	wp_enqueue_script( 'show-reviews-plugin-js', plugins_url( 'assets/script.js?ver=3.0.5', __FILE__ ), [],
+		'1.0.0', true ); // Print in footer
 }
 
 add_action( 'wp_enqueue_scripts', 'srp_plugin_enqueue_styles' );
@@ -107,14 +107,13 @@ function srp_plugin_admin_enqueue_styles() {
 
 	// include CSS files
 	wp_enqueue_style( 'show-reviews-plugin', plugins_url( 'assets/admin.css?ver=3.0.5', __FILE__ ) );
-	wp_enqueue_script( 'srp-admin-scripts', plugins_url( 'assets/srp-admin-scripts.js?ver=3.0.5', __FILE__ ), array(),
-			'1.0.0', true ); // Print in footer
+	wp_enqueue_script( 'srp-admin-scripts', plugins_url( 'assets/srp-admin-scripts.js?ver=3.0.5', __FILE__ ), [],
+		'1.0.0', true ); // Print in footer
 
-	
+
 }
 
 add_action( 'admin_enqueue_scripts', 'srp_plugin_admin_enqueue_styles' );
-
 
 
 /**
@@ -125,7 +124,7 @@ if ( ! function_exists( 'srp_create_custom_post_type' ) ) {
 // Register Custom Post Type
 	function srp_create_custom_post_type() {
 
-		$labels = array(
+		$labels = [
 			'name'                  => _x( 'Reviews', 'Post Type General Name', 'show_review_posts' ),
 			'singular_name'         => _x( 'Review', 'Post Type Singular Name', 'show_review_posts' ),
 			'menu_name'             => __( 'Reviews', 'show_review_posts' ),
@@ -153,13 +152,13 @@ if ( ! function_exists( 'srp_create_custom_post_type' ) ) {
 			'items_list'            => __( 'Items list', 'show_review_posts' ),
 			'items_list_navigation' => __( 'Items list navigation', 'show_review_posts' ),
 			'filter_items_list'     => __( 'Filter items list', 'show_review_posts' ),
-		);
-		$args   = array(
+		];
+		$args   = [
 			'label'               => __( 'Review', 'show_review_posts' ),
 			'description'         => __( 'Hapigood Reviews', 'show_review_posts' ),
 			'labels'              => $labels,
-			'supports'            => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
-			'taxonomies'          => array( 'srp_review_tax_cat' ),
+			'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields' ],
+			'taxonomies'          => [ 'srp_review_tax_cat' ],
 			'hierarchical'        => false,
 			'public'              => true,
 			'show_ui'             => true,
@@ -175,7 +174,7 @@ if ( ! function_exists( 'srp_create_custom_post_type' ) ) {
 			'capability_type'     => 'post',
 			'show_in_rest'        => true,
 			//'rewrite' => array('slug' => 'testimonials'),
-		);
+		];
 		register_post_type( 'srp_review_posts', $args );
 
 	}
@@ -193,7 +192,7 @@ if ( ! function_exists( 'srp_create_reviews_taxonomy' ) ) {
 // Register Custom Taxonomy
 	function srp_create_reviews_taxonomy() {
 
-		$labels = array(
+		$labels = [
 			'name'                       => _x( 'Categories', 'Taxonomy General Name', 'show_review_posts' ),
 			'singular_name'              => _x( 'Category', 'Taxonomy Singular Name', 'show_review_posts' ),
 			'menu_name'                  => __( 'Category', 'show_review_posts' ),
@@ -214,8 +213,8 @@ if ( ! function_exists( 'srp_create_reviews_taxonomy' ) ) {
 			'no_terms'                   => __( 'No items', 'show_review_posts' ),
 			'items_list'                 => __( 'Items list', 'show_review_posts' ),
 			'items_list_navigation'      => __( 'Items list navigation', 'show_review_posts' ),
-		);
-		$args   = array(
+		];
+		$args   = [
 			'labels'            => $labels,
 			'hierarchical'      => true,
 			'public'            => true,
@@ -224,8 +223,8 @@ if ( ! function_exists( 'srp_create_reviews_taxonomy' ) ) {
 			'show_in_nav_menus' => true,
 			'show_tagcloud'     => false,
 			'show_in_rest'      => true,
-		);
-		register_taxonomy( 'srp_review_tax_cat', array( 'srp_review_posts' ), $args );
+		];
+		register_taxonomy( 'srp_review_tax_cat', [ 'srp_review_posts' ], $args );
 
 	}
 
@@ -257,7 +256,7 @@ function srp_add_post_meta_boxes() {
 	add_meta_box(
 		'srp-review-author-name',                                          // Unique ID
 		esc_html__( 'Review author', 'show_review_posts' ),       // Title
-		'srp_reviews_meta_box_html',                            			// Callback function
+		'srp_reviews_meta_box_html',                                        // Callback function
 		'srp_review_posts',                                            // Admin page (or post type)
 		'side',                                                        // Context
 		'default'                                                      // Priority
@@ -273,55 +272,64 @@ function srp_reviews_meta_box_html( $post ) {
 	$srp_author_description_meta = esc_attr( get_post_meta( $post->ID, 'srp_author_description_meta', true ) );
 	$srp_review_link_meta        = esc_attr( get_post_meta( $post->ID, 'srp_review_link_meta', true ) );
 	$srp_review_link_text_meta   = esc_attr( get_post_meta( $post->ID, 'srp_review_link_text_meta', true ) );
-	$srp_category_meta			 = esc_attr( get_post_meta( $post->ID, 'srp_category_meta', true ) );
+	$srp_category_meta           = esc_attr( get_post_meta( $post->ID, 'srp_category_meta', true ) );
+	$srp_og_image_original_meta  = esc_attr( get_post_meta( $post->ID, 'srp_review_og_image_original', true ) );
 
 	?>
 
 	<?php //wp_nonce_field( basename( __FILE__ ), 'srp_author_name_meta_nonce' ); ?>
-	<p>
-		<label for="srp_category_meta">
-		<?php _e( "Add the category.", 'show_review_posts' ); ?>
-		</label>
-		<br/>
-		<input class="widefat" type="text" name="srp_category_meta" id="srp_category_meta"
-					 value="<?php echo $srp_category_meta; ?>"/>
-	</p>
+    <p>
+        <label for="srp_category_meta">
+			<?php _e( "Add the category.", 'show_review_posts' ); ?>
+        </label>
+        <br/>
+        <input class="widefat" type="text" name="srp_category_meta" id="srp_category_meta"
+               value="<?php echo $srp_category_meta; ?>"/>
+    </p>
 
-	<p>
-		<label for="srp-review-author-name">
-		<?php _e( "Add the name of the author of the review.", 'show_review_posts' ); ?>
-		</label>
-		<br/>
-		<input class="widefat" type="text" name="srp-review-author-name" id="srp-review-author-name"
-					 value="<?php echo $srp_author_name_meta; ?>"/>
-	</p>
+    <p>
+        <label for="srp-review-author-name">
+			<?php _e( "Add the name of the author of the review.", 'show_review_posts' ); ?>
+        </label>
+        <br/>
+        <input class="widefat" type="text" name="srp-review-author-name" id="srp-review-author-name"
+               value="<?php echo $srp_author_name_meta; ?>"/>
+    </p>
 
-	<p>
-		<label for="srp-review-author-description">
-		<?php _e( "Add the description of the author of the review.", 'show_review_posts' ); ?>
-		</label>
-		<br/>
-		<input class="widefat" type="text" name="srp-review-author-description" id="srp-review-author-description"
-					 value="<?php echo $srp_author_description_meta ?>"/>
-	</p>
+    <p>
+        <label for="srp-review-author-description">
+			<?php _e( "Add the description of the author of the review.", 'show_review_posts' ); ?>
+        </label>
+        <br/>
+        <input class="widefat" type="text" name="srp-review-author-description" id="srp-review-author-description"
+               value="<?php echo $srp_author_description_meta ?>"/>
+    </p>
 
-	<p>
-		<label for="srp-review-link">
-		<?php _e( "Review Link:", 'show_review_posts' ); ?>
-		</label>
-		<br/>
-		<input class="widefat" type="text" name="srp-review-link" id="srp-review-link"
-					 value="<?php echo $srp_review_link_meta ?>"/>
-	</p>
+    <p>
+        <label for="srp-review-link">
+			<?php _e( "Review Link:", 'show_review_posts' ); ?>
+        </label>
+        <br/>
+        <input class="widefat" type="text" name="srp-review-link" id="srp-review-link"
+               value="<?php echo $srp_review_link_meta ?>"/>
+    </p>
 
-	<p>
-		<label for="srp-review-link-text">
-		<?php _e( "Review Link Text:", 'show_review_posts' ); ?>
-		</label>
-		<br/>
-		<input class="widefat" type="text" name="srp-review-link-text" id="srp-review-link-text"
-					 value="<?php echo $srp_review_link_text_meta ?>"/>
-	</p>
+    <p>
+        <label for="srp-review-link-text">
+			<?php _e( "Review Link Text:", 'show_review_posts' ); ?>
+        </label>
+        <br/>
+        <input class="widefat" type="text" name="srp-review-link-text" id="srp-review-link-text"
+               value="<?php echo $srp_review_link_text_meta ?>"/>
+    </p>
+    <p>
+        <label for="srp-review-og-image-original">
+			<?php _e( "Og image link.", 'show_review_posts' ); ?>
+        </label>
+        <br/>
+        <input class="widefat" type="text" name="srp-review-og-image-original" id="srp-review-og-image-original"
+               value="<?php echo $srp_review_og_image_original; ?>"/>
+    </p>
 <?php }
 
 
@@ -356,14 +364,14 @@ function srp_save_review_meta( $post_id, $post ) {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return $post_id;
 	}
-	
+
 	// Add / Update category
 // 	$new_tax_args = array(
 // 		'cat_name' => 'Test Category',
 // 		'category_nicename' => 'test-cat',
 // 		'taxonomy' => 'srp_review_tax_cat'
 // 	);
-	
+
 // 	wp_insert_category( $new_tax_args );
 
 	/* Get the posted data and sanitize it for use as an HTML class. */
@@ -371,12 +379,14 @@ function srp_save_review_meta( $post_id, $post ) {
 	$new_meta_value_author_description = isset( $_POST['srp-review-author-description'] ) ? sanitize_text_field( $_POST['srp-review-author-description'] ) : '';
 	$new_meta_value_review_link        = isset( $_POST['srp-review-link'] ) ? sanitize_text_field( $_POST['srp-review-link'] ) : '';
 	$new_meta_value_review_link_text   = isset( $_POST['srp-review-link-text'] ) ? sanitize_text_field( $_POST['srp-review-link-text'] ) : '';
+	$new_meta_value_og_image_original  = isset( $_POST['srp-review-og-image-original'] ) ? sanitize_text_field( $_POST['srp-review-og-image-original'] ) : '';
 
 	/* Get the meta key. */
 	$meta_key_author_name        = 'srp_author_name_meta';
 	$meta_key_author_description = 'srp_author_description_meta';
 	$meta_key_review_link        = 'srp_review_link_meta';
 	$meta_key_review_link_text   = 'srp_review_link_text_meta';
+	$meta_key_og_image_original  = 'srp_og_image_original_meta';
 	//$meta_key_category	 = 'srp_category_meta';
 
 	/* Get the meta value */
@@ -384,8 +394,14 @@ function srp_save_review_meta( $post_id, $post ) {
 	$meta_value_author_description = get_post_meta( $post_id, $meta_key_author_description, true );
 	$meta_value_review_link        = get_post_meta( $post_id, $meta_key_review_link, true );
 	$meta_value_review_link_text   = get_post_meta( $post_id, $meta_key_review_link_text, true );
+	$meta_value_og_image_original  = get_post_meta( $post_id, $meta_key_og_image_original, true );
 	//$meta_value_category	 	   = get_post_meta( $post_id, $meta_key_category, true );
 
+
+	/* If a new meta value was added and does not match the old value, add it. */
+	if ( isset( $new_meta_value_og_image_original ) && $new_meta_value_og_image_original != $meta_value_author_name ) {
+		update_post_meta( $post_id, $meta_key_og_image_original, $new_meta_value_og_image_original );
+	}
 
 	/* If a new meta value was added and does not match the old value, add it. */
 	if ( isset( $new_meta_value_author_name ) && $new_meta_value_author_name != $meta_value_author_name ) {
@@ -406,41 +422,19 @@ function srp_save_review_meta( $post_id, $post ) {
 	if ( isset( $new_meta_value_review_link_text ) && $new_meta_value_review_link_text != $meta_value_review_link_text ) {
 		update_post_meta( $post_id, $meta_key_review_link_text, $new_meta_value_review_link_text );
 	}
-	
-// 	if ( isset( $meta_value_category ) ) {
-// 		wp_set_object_terms( $post_id, $meta_value_category, 'srp_review_tax_cat' );
-// 	}
-
-// old code
-	/* If a new meta value was added and there was no previous value, add it. */
-//	if ( $new_meta_value_author_description && ’ == $meta_value_author_description ) {
-//		add_post_meta( $post_id, $meta_key_author_description, $new_meta_value_author_description, true );
-//	} /* If the new meta value does not match the old value, update it. */
-//		elseif ( $new_meta_value_author_description && $new_meta_value_author_description != $meta_value_author_description ) {
-//		update_post_meta( $post_id, $meta_key_author_description, $new_meta_value_author_description );
-//	} /* If there is no new meta value but an old value exists, delete it. */
-//		elseif ( ’ == $new_meta_value_author_description && $meta_value_author_description ) {
-//		delete_post_meta( $post_id, $meta_key_author_description, $meta_value_author_description );
-//	}
 }
 
 /**
-* Custom post type template
-**/
+ * Custom post type template
+ **/
 function load_srp_review_post( $template ) {
-    global $post;
+	global $post;
 
-    if ( 'srp_review_posts' === $post->post_type && locate_template( array( 'single-srp_review_posts.php' ) ) !== $template ) {
-        /*
-         * This is a 'movie' post
-         * AND a 'single movie template' is not found on
-         * theme or child theme directories, so load it
-         * from our plugin directory.
-         */
-        return plugin_dir_path( __FILE__ ) . '/templates/single-srp_review_posts.php';
-    }
+	if ( 'srp_review_posts' === $post->post_type && locate_template( [ 'single-srp_review_posts.php' ] ) !== $template ) {
+		return plugin_dir_path( __FILE__ ) . '/templates/single-srp_review_posts.php';
+	}
 
-    return $template;
+	return $template;
 }
 
 add_filter( 'single_template', 'load_srp_review_post' );
@@ -448,22 +442,37 @@ add_filter( 'single_template', 'load_srp_review_post' );
 /**
  * OG Image Generator
  */
-$gdinfo = gd_info();
-if ( $gdinfo['FreeType Support'] ) { // Check FreeType
-	$options_dinamyc_og = get_option( 'srp_og_dynamic' );
-
-	if ( is_array($options_dinamyc_og) && 1 == $options_dinamyc_og['srp_og_dynamic'] ) {
-		function options_dinamyc_og(){
-			global $post;
-			if ( is_singular( 'srp_review_posts' ) ) {
-				require dirname( __FILE__ ) . '/og-image-generator.php';
+function srp_remove_og_image() {
+	global $post;
+	if ( 'srp_review_posts' === $post->post_type ) {
+		if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) || is_plugin_active( 'wordpress-seo-premium/wp-seo-premium.php' ) ) {
+			function filter_presenters( $filter ) {
+				if ( ( $key = array_search( 'Yoast\WP\SEO\Presenters\Open_Graph\Image_Presenter', $filter ) ) !== false ) {
+					unset( $filter[ $key ] );
+				}
+				return $filter;
 			}
+
+			add_filter( 'wpseo_frontend_presenter_classes', 'filter_presenters' );
 		}
-		add_action( 'wp', 'options_dinamyc_og' );
 	}
 }
 
-include dirname(__FILE__) . '/srp_api.php';
+add_action( 'init', 'srp_remove_og_image' );
+
+
+function add_og_image() {
+	global $post;
+	if ( 'srp_review_posts' === $post->post_type ) {
+		$srp_og_image_original_meta = get_post_meta( $post->ID, 'srp_review_og_image_original', true );
+		echo '<meta property="og:image" content="' . $srp_og_image_original_meta . '" />';
+	}
+}
+
+add_action( 'wp_head', 'add_og_image' );
+
+
+include dirname( __FILE__ ) . '/srp_api.php';
 add_action( 'admin_post_nopriv_srp', 'srp_post_handler' );
 /**
  * Plugin update functions
@@ -480,4 +489,3 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 
 //Set the branch that contains the stable release. 
 $myUpdateChecker->setBranch( 'main' );
-
