@@ -35,7 +35,7 @@
     font-weight: 700;
     border: none;
     border-radius: 8px;
-    background: conic-gradient(from 222.61deg at 49.67% -127.45%, #7DCDD4 0deg, #ABD490 275.62deg, #7DCDD4 360deg);
+    background: conic-gradient(from 268.29deg at 106.47% 109.82%, #59D0DB 0deg, #072630 275.62deg, #59D0DB 360deg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,12 +48,12 @@
 }
 
 .show-reviews-posts-share-button:hover{
-    background: conic-gradient(from 222.61deg at 49.67% -127.45%, #ABD490 0deg, #7DCDD4 271.12deg, #ABD490 360deg);
+    background: conic-gradient(from 268.29deg at 106.47% 109.82%, #59D0DB 0deg, #59D0DB 275.62deg, #59D0DB 360deg);
 	color:#000;
 }
 
 .show-reviews-posts-share-button:focus{
-	background: conic-gradient(from 222.61deg at 49.67% -127.45%, #71B8BF 0deg, #9ABF82 275.62deg, #71B8BF 360deg);
+	background: conic-gradient(from 268.29deg at 106.47% 109.82%, #59D0DB 0deg, #59D0DB 275.62deg, #59D0DB 360deg);
 	color:#000;
 }
 
@@ -215,7 +215,6 @@ img.hapigood-logo.without-text {
 	border: 2px solid #F2F4F1;
 	box-sizing: border-box;
 	border-radius: 8px;
-	text-align: left;
 }
 
 .review-posts-article-full.review-posts-article{
@@ -396,6 +395,9 @@ span.close-link-full-review:hover {
 
 .show-review-posts-row .page-numbers {
 	padding: 12px !important;
+}
+.show-review-posts-row .page-numbers,
+.show-review-posts-row .page-numbers:visited{
 	color:#000 !important;
 }
 
@@ -403,9 +405,9 @@ span.close-link-full-review:hover {
 .show-review-posts-row .page-numbers.current,
 .show-review-posts-row .prev.page-numbers:hover,
 .show-review-posts-row .next.page-numbers:hover {
-    background: #abd490 !important;
+    background: #59D0DB !important;
     color: #FFFFFF !important;
-    border-color: #abd490 !important;
+    border-color: #59D0DB !important;
 }
 
 @media only screen and (max-device-width :560px) {
@@ -628,16 +630,14 @@ span.close-link-full-review:hover {
 #fn-fullrev p{
 	font-family: 'Inter', sans-serif;
 	margin: 0;
-	padding: 0;
 }
 
 #fn-fullrev h2{
-	font-weight: 700;
+	font-size: 18px;
+    font-weight: 700;
     margin-top: 0;
-    max-width: 80%;
-    text-transform: none;
-    font-size: 32px;
-    margin-bottom: 10px;
+	max-width: 80%;
+	text-transform: none;
 }
 
 #fn-fullrev h2 a{
@@ -652,9 +652,8 @@ span.close-link-full-review:hover {
 #fn-fullrev .fn-description{
 	font-weight: 400;
     font-size: 16px;
-	max-width: 95%;
+	max-width: 80%;
     color: #A6B19B;
-	display: block;
 }
 
 #fn-fullrev .fn-meta{
@@ -675,7 +674,6 @@ span.close-link-full-review:hover {
 
 #fn-fullrev .fn-content p{
 	font-size: 18px;
-	line-height: 28px;
 }
 
 #fn-fullrev .show-review-posts-share{
