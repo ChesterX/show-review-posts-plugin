@@ -131,7 +131,7 @@ align-items: center;
 	z-index: 2;
 	height: 4px;
 	width: 56%;
-	background: #ABD490;
+	background: #59d0db;
 }
 
 
@@ -333,7 +333,7 @@ span.close-link-full-review:hover {
 .show-review-posts-row a.more-button {
 	max-width: 240px;
 	display: block;
-	border: 2px solid #ABD490;
+	border: 2px solid #59d0db;
 	box-sizing: border-box;
 	border-radius: 8px;
 	padding: 10px 0;
@@ -347,7 +347,7 @@ span.close-link-full-review:hover {
 }
 
 .show-review-posts-row a.more-button:hover {
-	background: #ABD490 !important;
+	background: #59d0db !important;
 
 	transition: all .3s ease;
 }
