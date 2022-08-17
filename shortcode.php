@@ -128,7 +128,7 @@ function srp_generate_review_posts( $atts ) {
 	if ( $show_on_home_state != 0 ) :
 
 	?>
-	<a href="<?php echo $options_more_reviews_link['srp_more_reviews_link_field'] ?>" class="more-button">
+	<a href="<?php echo $options_more_reviews_link['srp_more_reviews_link_field'] ?>" class="more-button" target="_TOP">
 		<?php _e( 'More', 'show_review_posts' ); ?>
 	</a>
 	<?php endif; ?>
