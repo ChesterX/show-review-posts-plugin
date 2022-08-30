@@ -9,7 +9,7 @@
  * Plugin Name:       Hapigood reviews plugin
  * Plugin URI:        simpals.com
  * Description:       This is a custom Hapigood plugin for reviews showing
- * Version:           4.0.6
+ * Version:           4.0.7
  * Author:            Simpals Dev
  * Author URI:        simpals.com
  * License:           GPL-2.0+
@@ -430,6 +430,10 @@ function srp_save_review_meta( $post_id, $post ) {
 function load_srp_review_post( $template ) {
 	global $post;
 
+	if ( ! is_object( $post ) ) {
+		return;
+	}
+
 	if ( 'srp_review_posts' === $post->post_type && locate_template( [ 'single-srp_review_posts.php' ] ) !== $template ) {
 		return plugin_dir_path( __FILE__ ) . '/templates/single-srp_review_posts.php';
 	}
@@ -444,12 +448,18 @@ add_filter( 'single_template', 'load_srp_review_post' );
  */
 function srp_remove_og_image() {
 	global $post;
+
+	if ( ! is_object( $post ) ) {
+		return;
+	}
+
 	if ( 'srp_review_posts' === $post->post_type ) {
 		if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) || is_plugin_active( 'wordpress-seo-premium/wp-seo-premium.php' ) ) {
 			function filter_presenters( $filter ) {
 				if ( ( $key = array_search( 'Yoast\WP\SEO\Presenters\Open_Graph\Image_Presenter', $filter ) ) !== false ) {
 					unset( $filter[ $key ] );
 				}
+
 				return $filter;
 			}
 
@@ -463,6 +473,11 @@ add_action( 'init', 'srp_remove_og_image' );
 
 function add_og_image() {
 	global $post;
+
+	if ( ! is_object( $post ) ) {
+		return;
+	}
+
 	if ( 'srp_review_posts' === $post->post_type ) {
 		$srp_og_image_original_meta = get_post_meta( $post->ID, 'srp_review_og_image_original', true );
 		echo '<meta property="og:image" content="' . $srp_og_image_original_meta . '" />';
