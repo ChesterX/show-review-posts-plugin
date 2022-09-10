@@ -9,7 +9,7 @@
  * Plugin Name:       Hapigood reviews plugin
  * Plugin URI:        simpals.com
  * Description:       This is a custom Hapigood plugin for reviews showing
- * Version:           4.0.9
+ * Version:           4.1.0
  * Author:            Simpals Dev
  * Author URI:        simpals.com
  * License:           GPL-2.0+
@@ -444,47 +444,38 @@ function load_srp_review_post( $template ) {
 add_filter( 'single_template', 'load_srp_review_post' );
 
 /**
- * OG Image Generator
+ * OG Image
  */
-function srp_remove_og_image() {
-	global $post;
 
-	if ( ! is_object( $post ) ) {
-		return;
-	}
-
-	if ( 'srp_review_posts' === $post->post_type ) {
-		if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) || is_plugin_active( 'wordpress-seo-premium/wp-seo-premium.php' ) ) {
-			function filter_presenters( $filter ) {
-				if ( ( $key = array_search( 'Yoast\WP\SEO\Presenters\Open_Graph\Image_Presenter', $filter ) ) !== false ) {
-					unset( $filter[ $key ] );
-				}
-
-				return $filter;
-			}
-
-			add_filter( 'wpseo_frontend_presenter_classes', 'filter_presenters' );
+// Remove og image, image:width, image:height
+add_filter( 'wpseo_frontend_presenter_classes', 'filter_presenters' );
+if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) || is_plugin_active( 'wordpress-seo-premium/wp-seo-premium.php' ) ) {
+	function filter_presenters( $filter ) {
+		global $post;
+		var_dump( $post->post_type );
+		if ( ( $key = array_search( 'Yoast\WP\SEO\Presenters\Open_Graph\Image_Presenter', $filter ) ) !== false ) {
+			unset( $filter[ $key ] );
 		}
+
+		return $filter;
 	}
 }
 
-add_action( 'init', 'srp_remove_og_image' );
+// Add new og:image
+ function add_og_image() {
+ 	global $post;
 
+ 	if ( ! is_object( $post ) ) {
+ 		return;
+ 	}
 
-function add_og_image() {
-	global $post;
+ 	if ( 'srp_review_posts' === $post->post_type ) {
+ 		$srp_og_image_original_meta = get_post_meta( $post->ID, 'srp_review_og_image_original', true );
+ 		echo '<meta property="og:image" content="' . $srp_og_image_original_meta . '" />';
+ 	}
+ }
 
-	if ( ! is_object( $post ) ) {
-		return;
-	}
-
-	if ( 'srp_review_posts' === $post->post_type ) {
-		$srp_og_image_original_meta = get_post_meta( $post->ID, 'srp_review_og_image_original', true );
-		echo '<meta property="og:image" content="' . $srp_og_image_original_meta . '" />';
-	}
-}
-
-add_action( 'wp_head', 'add_og_image' );
+ add_action( 'wp_head', 'add_og_image' );
 
 
 include dirname( __FILE__ ) . '/srp_api.php';
