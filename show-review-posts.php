@@ -9,7 +9,7 @@
  * Plugin Name:       Hapigood reviews plugin
  * Plugin URI:        simpals.com
  * Description:       This is a custom Hapigood plugin for reviews showing
- * Version:           4.1.0
+ * Version:           4.1.1
  * Author:            Simpals Dev
  * Author URI:        simpals.com
  * License:           GPL-2.0+
@@ -452,7 +452,11 @@ add_filter( 'wpseo_frontend_presenter_classes', 'filter_presenters' );
 if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) || is_plugin_active( 'wordpress-seo-premium/wp-seo-premium.php' ) ) {
 	function filter_presenters( $filter ) {
 		global $post;
-		var_dump( $post->post_type );
+
+		if ( 'srp_review_posts' != $post->post_type ) {
+            return $filter;
+		}
+
 		if ( ( $key = array_search( 'Yoast\WP\SEO\Presenters\Open_Graph\Image_Presenter', $filter ) ) !== false ) {
 			unset( $filter[ $key ] );
 		}
