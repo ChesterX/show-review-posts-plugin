@@ -102,21 +102,7 @@ if ( $custom_query->have_posts() ) :
                             <a href="<?php echo $review_link ?>" class="review-posts-link-to-source" target="_blank">
 								<?php echo $review_link_text ?>
                             </a>
-						<?php }
-						?>						<?php
-						// get link address
-
-						// Get the custom post class.
-						$review_link      = get_post_meta(  get_the_ID(), 'srp_review_link_meta', true );
-						$review_link_text = get_post_meta(  get_the_ID(), 'srp_review_link_text_meta', true );
-
-						// If a post class was input, sanitize it and add it to the post class array.
-						if ( ! empty( $review_link ) && ! empty( $review_link_text ) ) { ?>
-                            <a href="<?php echo $review_link ?>" class="review-posts-link-to-source" target="_blank">
-								<?php echo $review_link_text ?>
-                            </a>
-						<?php }
-						?>
+						<?php } ?>
 					</div><!-- .eview-posts-full-content -->
 
 					<footer class="review-posts-entry-footer <?php //if ($srp_words_num <= NUMBER_OF_WORDS) echo 'hide' ; ?>">
