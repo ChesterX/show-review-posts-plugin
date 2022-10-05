@@ -9,7 +9,7 @@
  * Plugin Name:       Hapigood reviews plugin
  * Plugin URI:        simpals.com
  * Description:       This is a custom Hapigood plugin for reviews showing
- * Version:           4.1.2
+ * Version:           5.0.0
  * Author:            Simpals Dev
  * Author URI:        simpals.com
  * License:           GPL-2.0+
@@ -479,11 +479,104 @@ if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) || is_plugin_active( 'wordpr
  	}
  }
 
- add_action( 'wp_head', 'add_og_image' );
+add_action( 'wp_head', 'add_og_image' );
 
+
+
+function srp_replace_meta_descriptions(){
+	global $post;
+
+ 	if ( ! is_object( $post ) ) {
+ 		return;
+ 	}
+
+ 	if ( 'srp_review_posts' != $post->post_type ) {
+ 		return;
+ 	}
+
+ 	if(empty(get_option('hap_custom_description'))){
+ 		return;
+ 	}
+ 	
+	function replace_meta_descriptions($html) {
+	   global $post;
+	   $pattern = '/<meta name(.*)=(.*)"description"(.*)>/i';
+	   $html = preg_replace($pattern, '<meta name="description" content="' . get_option('hap_custom_description') . '" />', $html);
+	   return $html;
+	}
+	function clean_meta_descriptions($html) {
+	    ob_start('replace_meta_descriptions');
+	}
+	add_action('get_header', 'clean_meta_descriptions', 100);
+	add_action('wp_footer', function(){ ob_end_flush(); }, 100);
+
+	function filter_lp_title($title) {
+		if(!empty(get_option('hap_custom_title'))){
+	    	return get_option('hap_custom_title');
+		}
+		return $title;
+	}
+	add_filter( 'pre_get_document_title', 'filter_lp_title', 25 );
+}
+
+add_action('wp', 'srp_replace_meta_descriptions');
+
+// function srp_replace_meta_descriptions(){
+// 	global $post;
+
+//  	if ( ! is_object( $post ) ) {
+//  		return;
+//  	}
+
+//  	if ( 'srp_review_posts' != $post->post_type ) {
+//  		return;
+//  	}
+
+//  	if(empty(get_post_meta( $post->ID, 'srp_review_meta_description', true ))){
+//  		return;
+//  	}
+ 	
+// 	function replace_meta_descriptions($html) {
+// 	   global $post;
+// 	   $pattern = '/<meta name(.*)=(.*)"description"(.*)>/i';
+// 	   $html = preg_replace($pattern, '<meta name="description" content="' . get_post_meta( $post->ID, 'srp_review_meta_description', true ) . '" />', $html);
+// 	   return $html;
+// 	}
+// 	function clean_meta_descriptions($html) {
+// 	    ob_start('replace_meta_descriptions');
+// 	}
+// 	add_action('get_header', 'clean_meta_descriptions', 100);
+// 	add_action('wp_footer', function(){ ob_end_flush(); }, 100);
+// }
+
+// add_action('wp', 'srp_replace_meta_descriptions');
+
+
+// function srp_add_keywords() {
+// 	global $post;
+
+//  	if ( ! is_object( $post ) ) {
+//  		return;
+//  	}
+
+//  	if ( 'srp_review_posts' != $post->post_type ) {
+//  		return;
+//  	}
+
+//  	if(!empty(get_post_meta( $post->ID, 'srp_review_meta_keywords', true ))){
+//  		echo '<meta name="keywords" content="' . get_post_meta( $post->ID, 'srp_review_meta_keywords', true ) . '" />';
+//  	}
+
+// }
+
+// add_action( 'wp_head', 'srp_add_keywords' );
+ 
 
 include dirname( __FILE__ ) . '/srp_api.php';
 add_action( 'admin_post_nopriv_srp', 'srp_post_handler' );
+
+include dirname( __FILE__ ) . '/srp_get_reviews.php';
+
 /**
  * Plugin update functions
  */
