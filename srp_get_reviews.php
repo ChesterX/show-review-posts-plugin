@@ -135,14 +135,14 @@ function hap_edit_post_callback(){
 	applyCustomHeaders( $origin_site_address );
 		$formDataArr = [
 			'ID' 				  => $_POST['post_id'],
-			'post_content'        => $_POST['content'],
-			'post_title'          => wp_strip_all_tags( $_POST['title'] ),
+			'post_content'        => stripcslashes($_POST['content']),
+			'post_title'          => stripcslashes(wp_strip_all_tags( $_POST['title'] )),
 			'post_date'           => wp_strip_all_tags( $_POST['date'] ),
 			'meta_input'          => [
-				'srp_author_name_meta'         => wp_strip_all_tags( $_POST['srp_author_name_meta'] ),
+				'srp_author_name_meta'         => stripcslashes(wp_strip_all_tags( $_POST['srp_author_name_meta'] )),
 				//'srp_author_description_meta'  => wp_strip_all_tags( $_POST['srp_author_description_meta'] ),
-				'srp_review_link_meta'         => wp_strip_all_tags( $_POST['srp_review_link_meta'] ),
-				'srp_review_link_text_meta'    => wp_strip_all_tags( $_POST['srp_review_link_text_meta'] ),
+				'srp_review_link_meta'         => stripcslashes(wp_strip_all_tags( $_POST['srp_review_link_meta'] )),
+				'srp_review_link_text_meta'    => stripcslashes(wp_strip_all_tags( $_POST['srp_review_link_text_meta'] )),
 				//'srp_category_meta' =>  wp_strip_all_tags( $formDataJSON->post_category ),
 				//'srp_review_og_image_original' => wp_strip_all_tags( $formDataJSON->og_fb ),
 				// 'srp_review_meta_description' => wp_strip_all_tags( $_POST['srp_review_meta_description'] ),
