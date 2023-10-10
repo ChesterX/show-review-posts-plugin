@@ -38,6 +38,7 @@ if ( $custom_query->have_posts() ) :
 		$text_content = get_the_content();
 		$post_url = get_permalink();
 ?>
+
 <article class="review-posts-article">
     <header class="review-posts-entry-header">
 		<div class="review-posts-left">
@@ -56,7 +57,6 @@ if ( $custom_query->have_posts() ) :
 
 								<?php
 									// get link address
-
 										// Get the custom post class.
 										$author_description_text = get_post_meta(  get_the_ID(), 'srp_author_description_meta', true );
 
@@ -75,7 +75,7 @@ if ( $custom_query->have_posts() ) :
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M21.1038 22.1845C16.9854 24.5639 9.9289 24.6151 4.98633 22.2753L6.5741 19.0043C10.7368 20.5153 15.847 20.5269 19.3787 18.8577L21.1038 22.1845Z" fill="#59D0DB"/>
 						</svg>
 							<span class="review-posts-date">
-								<?php the_time( 'j F Y' ); ?>
+								<?php the_time( 'd.m.Y' ); ?>
 							</span>
 						</div>
 					</header><!-- .review-posts-entry-header -->
@@ -84,12 +84,21 @@ if ( $custom_query->have_posts() ) :
 						<p>
 							<?php
 							echo wp_trim_words(get_the_content(), 25, '...');
+                            $srp_post_image_meta  = esc_attr( get_post_meta( get_the_ID(), 'srp_review_testimonial_image', true ) );
+                            if($srp_post_image_meta) {
+                                echo '<img src="' . $srp_post_image_meta . '" alt="" class="base64img">';
+                            }
 							?>
 						</p>
 					</div><!-- .review-posts-entry-content -->
 
 					<div class="review-posts-full-content">
-						<?php the_content(); ?>
+						<?php
+                        the_content();
+                        if($srp_post_image_meta) {
+                            echo '<img src="' . $srp_post_image_meta . '" alt="" class="base64img">';
+                        }
+						?>
 						<?php
 						// get link address
 

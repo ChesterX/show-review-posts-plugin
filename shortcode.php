@@ -49,7 +49,10 @@ function srp_generate_review_posts( $atts ) {
 		'in_category'    => 0,
 		'location_name'	 => '',
 		'full_review' => 0,
-		'google_location' => ''
+		'google_location' => '',
+        'expert_photo' => '',
+        'expert_name' => '',
+        'expert_description' => ''
 	], $atts );
 
 
@@ -96,10 +99,14 @@ function srp_generate_review_posts( $atts ) {
 				global $rev_link;
 				if ( $atts['in_category'] == 1 && $category_id ) :
 					$term = get_term( $category_id );
-					$rev_link = $options_review_link['srp_review_logo_link_field'] . '?location=' . $category_id . '&location_name=' . $term->name;// . '&google_location=' . $google_location_url;
+					$rev_link = $options_review_link['srp_review_logo_link_field'] . '?cat=' . $category_id;// . '&location_name=' . $term->name; . '&google_location=' . $google_location_url;
 				else :
 					$rev_link = $options_review_link['srp_review_logo_link_field'];// . '?google_location=' . $google_location_url;
 				endif;
+
+				if ( $atts['expert_photo'] ) {
+                    $rev_link = $rev_link . '&expert_photo=' . $atts['expert_photo'] . '&expert_name=' . $atts['expert_name'] . '&expert_description=' . $atts['expert_description'];
+                }
 			?>
 		<div class="show-review-posts-header-right">
 			
@@ -109,7 +116,9 @@ function srp_generate_review_posts( $atts ) {
 					<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M17.9332 17.3174C15.1028 18.9526 10.2532 18.9878 6.85645 17.3798L7.94765 15.1318C10.8084 16.1702 14.3204 16.1782 16.7476 15.031L17.9332 17.3174Z" fill="url(#paint0_angular_519_967)"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.3107 11.9798L16.5507 13.4838L14.4707 12.1798L17.7667 8.103L18.8211 8.0358L22.1091 11.9238L20.1891 13.5542L18.3107 11.9798ZM6.32828 11.9798L4.56828 13.4838L2.48828 12.1798L5.78428 8.103L6.83708 8.0358L10.1267 11.9238L8.20668 13.5542L6.32828 11.9798Z" fill="#072630"/> <defs> <radialGradient id="paint0_angular_519_967" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.3582 10.5267) rotate(133.452) scale(8.67962 8.83383)"> <stop stop-color="#7DCDD4"/> <stop offset="0.765625" stop-color="#ABD490"/> </radialGradient> </defs> </svg>
 				</div>
 				<div class="show-review-posts-header-rating__revcounter">
+					<?php if ( ! $atts['in_category'] == 1 && ! $category_id ) : ?>
 				<?php echo wp_count_posts("srp_review_posts")->publish;?> testimonials
+					<?php endif; ?>
 				</div>
 
 				<div class="scale"><span></span></div>
@@ -215,14 +224,21 @@ function srp_generate_review_posts( $atts ) {
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M21.1038 22.1845C16.9854 24.5639 9.9289 24.6151 4.98633 22.2753L6.5741 19.0043C10.7368 20.5153 15.847 20.5269 19.3787 18.8577L21.1038 22.1845Z" fill="#59D0DB"/>
 						</svg>
 							<span class="review-posts-date">
-								<?php the_time( 'j F Y' ); ?>
+								<?php the_time( 'd.m.Y' ); ?>
 							</span>
 						</div>
 					</header><!-- .review-posts-entry-header -->
 
 					<div class="review-posts-entry-content">
 						<p>
-							<?php the_content(); ?>
+							<?php
+                            the_content();
+                            $srp_post_image_meta  = esc_attr( get_post_meta( get_the_ID(), 'srp_review_testimonial_image', true ) );
+                            if($srp_post_image_meta) {
+                                echo '<img src="' . $srp_post_image_meta . '" alt="" class="base64img">';
+                            }
+                            ?>
+
 						</p>
 						<?php
 						// get link address

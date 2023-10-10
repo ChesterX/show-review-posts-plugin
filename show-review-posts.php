@@ -9,7 +9,7 @@
  * Plugin Name:       Hapigood reviews plugin
  * Plugin URI:        simpals.com
  * Description:       This is a custom Hapigood plugin for reviews showing
- * Version:           5.0.1
+ * Version:           5.0.2
  * Author:            Simpals Dev
  * Author URI:        simpals.com
  * License:           GPL-2.0+
@@ -89,11 +89,11 @@ function srp_flush_rewrite_rules() {
  */
 function srp_plugin_enqueue_styles() {
 
-	wp_enqueue_style( 'show-reviews-plugin', plugins_url( 'assets/style.css?ver=3.0.5', __FILE__ ) );
+	wp_enqueue_style( 'show-reviews-plugin', plugins_url( 'assets/style.css?ver=3.0.7', __FILE__ ) );
 	wp_enqueue_style( 'jquery.fancybox.min', plugins_url( 'assets/jquery.fancybox.min.css', __FILE__ ) );
 	wp_enqueue_script( 'jquery.fancybox.min', plugins_url( 'assets/jquery.fancybox.min.js', __FILE__ ), [],
 		'1.0.0', true ); // Print in footer
-	wp_enqueue_script( 'show-reviews-plugin-js', plugins_url( 'assets/script.js?ver=3.0.5', __FILE__ ), [],
+	wp_enqueue_script( 'show-reviews-plugin-js', plugins_url( 'assets/script.js?ver=3.0.7', __FILE__ ), [],
 		'1.0.0', true ); // Print in footer
 }
 
@@ -449,11 +449,14 @@ add_filter( 'single_template', 'load_srp_review_post' );
 
 // Remove og image, image:width, image:height
 add_filter( 'wpseo_frontend_presenter_classes', 'filter_presenters' );
+if (!function_exists('is_plugin_active')) {
+    include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+}
 if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) || is_plugin_active( 'wordpress-seo-premium/wp-seo-premium.php' ) ) {
 	function filter_presenters( $filter ) {
 		global $post;
 
-		if ( 'srp_review_posts' != $post->post_type ) {
+		if ( !is_object($post) || 'srp_review_posts' != $post->post_type) {
             return $filter;
 		}
 

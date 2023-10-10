@@ -33,7 +33,5 @@ jQuery( document ).ready(function($) {
 		return false;
 	});
 
-	$('.base64img').each(function(){
-		$(this).attr('src', 'data:' + $(this).attr('src'));
-	});
+	$('.base64img').fancybox();
 });

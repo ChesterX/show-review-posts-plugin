@@ -210,7 +210,7 @@ img.hapigood-logo.without-text {
 
 .review-posts-article {
 	margin: 0 0 30px 0 !important;
-	width: 49%;
+	width: 32%;
 	padding: 30px;
 	border: 2px solid #F2F4F1;
 	box-sizing: border-box;
@@ -293,9 +293,13 @@ span.close-link-full-review:hover {
 
 
 .review-author-description{
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 24px;
 	color: #A6B19B;
+}
+
+.review-posts-left{
+	max-width: 225px;
 }
 
 .review-posts-right{
@@ -505,7 +509,7 @@ span.close-link-full-review:hover {
 	display: flex;
 	justify-content: space-between;
 	flex-direction: row;
-	align-items: center;
+	align-items: flex-start;
 }
 
 .l-review a.review-posts-link-to-source {
@@ -707,7 +711,9 @@ span.close-link-full-review:hover {
 #fn-fullrev .fn-content img{
 	max-width: 25%;
 }
-
+@media(max-width: 1200px){
+	.review-posts-article{width:49%;}
+}
 @media (max-width: 767px){
 	.review-posts-article{
 		width: 100%;
@@ -755,3 +761,14 @@ span.close-link-full-review:hover {
 .nav-next{
 	transform: rotate(180deg);
 } */
+
+.base64img{
+	cursor: pointer;
+	display: block !important;
+	max-width: 25% !important;
+	border-radius: 6px !important;
+}
+
+.fancybox-content .base64img{
+	max-width: 100% !important;
+}
