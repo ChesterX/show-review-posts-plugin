@@ -224,7 +224,7 @@ function srp_generate_review_posts( $atts ) {
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M21.1038 22.1845C16.9854 24.5639 9.9289 24.6151 4.98633 22.2753L6.5741 19.0043C10.7368 20.5153 15.847 20.5269 19.3787 18.8577L21.1038 22.1845Z" fill="#59D0DB"/>
 						</svg>
 							<span class="review-posts-date">
-								<?php the_time( 'd.m.Y' ); ?>
+								<?php the_time( 'm.d.Y' ); ?>
 							</span>
 						</div>
 					</header><!-- .review-posts-entry-header -->
