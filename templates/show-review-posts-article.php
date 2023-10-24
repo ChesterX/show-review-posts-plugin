@@ -124,12 +124,12 @@ if ( $custom_query->have_posts() ) :
 				</article><!-- .article -->
 <?php endwhile; ?>
 </div>
-<? if ( ! is_singular('srp_review_posts') && $show_on_home_state == 0 ) : ?>
+<?php if ( ! is_singular('srp_review_posts') && $show_on_home_state == 0 ) : ?>
     <div class="show-review-posts-row show-review-posts-flex-nav">
         <?php echo paginate_links( array( 'total' => $custom_query->max_num_pages ) ); ?>
     </div>
 <?php
-	endif;
+endif;
 	wp_reset_postdata();
 endif;
 ?>
