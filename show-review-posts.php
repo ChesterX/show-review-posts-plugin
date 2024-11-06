@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'SHOW_REVIEW_POSTS_VERSION', '1.4.0' );
+define( 'SHOW_REVIEW_POSTS_VERSION', '1.4.1' );
 define( 'PHP_REQUIRES_VERSION', '7.2' );
 define( 'PLUGIN_SLUG', 'srp' );
 
